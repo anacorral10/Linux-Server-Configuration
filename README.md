@@ -200,10 +200,11 @@ Your command line should now be back to grader.
 18. Initiate the database if you have a script to do so (example: `python database_setup.py` or `python lotsofmenus.py`)
 19. Restart Apache server `$ sudo service apache2 restart` and enter your public IP address or host name into the browser. **Hooray!!! Your application should be online now!** 
 
-#### References
+### References
 * [Configuring a firewall](https://www.linode.com/docs/security/firewalls/configure-firewall-with-ufw/)
 * [SSH Port](https://www.unixtutorial.org/ssh-port)
 * [Python virtualenv](https://www.pythonforbeginners.com/basics/how-to-use-python-virtualenv)
+* [Granting sudo priviledges for User](https://github.com/WhiskersReneeWe/LinuxServerDeployLightsail)
 
 
 
