@@ -107,6 +107,19 @@ We will use a Python virtual machine, Apache2 with mod_wsgi, and PostgreSQL to h
 ### Enable mod_wsgi
 2. Enable mod_wsgi by `$ sudo a2enmod wsgi` and start the web server by `$ sudo service apache2` start or `$ sudo service apache2 restart`. You should input the public IP address and you should see a page like below. If you do not see the page, you have to check the error message and google a solution: ![Apache](/apache2.png)
 
+### Setup Folder Structure
+3. We now have to create a directory for our catalog application and make the user grader the owner: 
+   * `$ cd /var/www`
+   * `$ sudo mkdir catalog`
+   * `$ sudo chown -R grader:grader catalog`
+   * `$ cd catalog`
+4. **Structure:** In this directory we will have our **catalog.wsgi** file `var/www/catalog/catalog.wsgi`, our virtual environment directory which we will create soon and call **venv** `/var/www/catalog/venv`, and also our application which will sit inside of another directory called **catalog** `/var/www/catalog/catalog`.
+   
+### Clone Catalog Project
+5. Now we clone the project from Github: `$ git clone [your link] catalog`
+
+
+
 
 
 
