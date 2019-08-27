@@ -77,6 +77,38 @@ Click the 'Download' to download your private key, it should go to your Download
 21. Type `$ ~.` to disconnect from Amazon Lightsail server
 22. Log into the server as grader: `$ ssh -i ~/.ssh/udacity_key.rsa grader@3.95.159.148`
 
+### Enforce key based authentication
+23. We now need to enforce the key-based authentication: `$ sudo nano /etc/ssh/sshd_config`. Find the *PasswordAuthentication* line and change text after to `no`. After this, restart ssh again: `$ sudo service ssh restart`
+
+### Change Port
+24. We now need to change the ssh port from 22 to 2200, as required by Udacity: `$ sudo nano /etc/ssh/ssdh_config` Find the *Port* line and change **22** to **2200**. Restart ssh: `$ sudo service ssh restart`
+25. Disconnect the server by `$ ~.` and then log back through port 2200: `$ ssh -i ~/.ssh/udacity_key.rsa -p 2200 grader@3.95.159.148`
+
+### Disable root login
+26. Disable ssh login for **root** user, as required by Udacity: `$ sudo nano /etc/ssh/sshd_config`. Find the *PermitRootLogin* line and edit to `no`. Restart ssh `$ sudo service ssh restart`
+
+### Configure UFW
+27. From here we need to configure the Firewall to support our applications and ports needed for this project:
+    * `$ sudo ufw allow 2200/tcp` to allow the server listen on port 2200
+    * `$ sudo ufw allow 80/tcp`
+    * `$ sudo ufw allow 123/udp`
+    * `$ sudo ufw enable`
+28. Running `$ sudo ufw status` should show all of the allowed ports with the firewall configuration.
+
+## Deploy Catalog Application
+We will use a Python virtual machine, Apache2 with mod_wsgi, and PostgreSQL to host our application. Before completeing the following steps, ssh to the Amazon Terminal through your Terminal with grader.
+
+### Install Apache and GIT
+1. Install required packages:
+   * `$ sudo apt-get install apache2`
+   * `$ sudo apt-get install libapache2-mod-wsgi python-dev`
+   * `$ sudo apt-get install git`
+   
+### Enable mod_wsgi
+2. Enable mod_wsgi by `$ sudo a2enmod wsgi` and start the web server by `$ sudo service apache2` start or `$ sudo service apache2 restart`. You should input the public IP address and you should see a page like below. If you do not see the page, you have to check the error message and google a solution: ![Apache](/images/apache2.png)
+
+
+
 
 
 
