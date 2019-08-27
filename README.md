@@ -9,6 +9,8 @@ The goal of this Capstone project is to deploy a web application built from a pr
 > Ubuntu Server Username: grader\
 > SSH port: 2200
 
+> URL: http://3.95.159.148/ OR http://ec2-3-95-159-148.compute-1.amazonaws.com/
+
 ### Software:
 > Openssh Server,  Apache2,  PostgreSQL,  GIT,  mod_wsgi,  Python,  virtualenv,  Flask,  requests,  httplib2,  sqlalchemy, psycopg2,  oauth2client,  render_template,  sqlalchemy_utils,  redirect
 
