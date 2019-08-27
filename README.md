@@ -105,7 +105,7 @@ We will use a Python virtual machine, Apache2 with mod_wsgi, and PostgreSQL to h
    * `$ sudo apt-get install git`
    
 ### Enable mod_wsgi
-2. Enable mod_wsgi by `$ sudo a2enmod wsgi` and start the web server by `$ sudo service apache2` start or `$ sudo service apache2 restart`. You should input the public IP address and you should see a page like below. If you do not see the page, you have to check the error message and google a solution: ![Apache](/images/apache2.png)
+2. Enable mod_wsgi by `$ sudo a2enmod wsgi` and start the web server by `$ sudo service apache2` start or `$ sudo service apache2 restart`. You should input the public IP address and you should see a page like below. If you do not see the page, you have to check the error message and google a solution: ![Apache](/apache2.png)
 
 
 
