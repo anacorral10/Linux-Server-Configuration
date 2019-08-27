@@ -137,7 +137,26 @@ application.secret_key = 'super_secret_key'
    * `$ sudo virtualenv venv`
    * `$ source venv/bin/activate`
    * `$ sudo chmod -R 777 venv`
-   You should see a `(venv)` appears before your username in the command line: ![Venv](/venv.png)
+9. You should see a `(venv)` appears before your username in the command line: ![Venv](/venv.png)
+
+### Install flask and other packages
+10. While our virtual environment is activated we need to install all packages required for our Flask application. Here are some defaults but you may have more to install:
+```
+$ sudo apt-get -H install python-pip
+$ sudo pip -h install Flask
+$ sudo pip -h install Requests
+$ sudo pip -h install httplib2
+$ sudo pip -h install sqlalchemy
+$ sudo pip -h install psycopg2
+$ sudo pip -h install oauth2client
+$ sudo pip -h install render_template
+$ sudo pip -h install sqlalchemy_utils
+$ sudo pip -h install redirect
+```
+
+11. Now for our application to properly run we must do some tweaking to the __init__.py file. Anywhere in the file where Python tries to open client_secrets.json this must be changed to its complete path. Use the `nano __init__.py` command to change the client_secrets.json line to `/var/www/catalog/catalog/client_secrets.json` ![Json](/json.png)
+
+12. We must also change the host to your Amazon Lightsail public IP address and port to 80 ![Port](/port.png)
    
    
 
