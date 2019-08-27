@@ -51,7 +51,7 @@ Click the 'Download' to download your private key, it should go to your Download
 
 ### Keygen
 12. Now we must create an SSH Key for our new user **grader**. Open a new Terminal window (Command+N) and input `$ ssh-keygen -f ~/.ssh/udacity_key.rsa`
-13. In the same terminal we need to read and copy the public key using the command: `$ cat ~/.ssh/udacity.rsa.pub`. Copy the key from the terminal.
+13. In the same terminal we need to read and copy the public key using the command: `$ cat ~/.ssh/udacity_key.rsa.pub`. Copy the key from the terminal.
 14. Going back to the first terminal window where you are logged into Amazon Lightsail as the root user, move to grader's folder by `$ cd /home/grader`
 15. Create a directory called .ssh with the command `$ mkdir .ssh`
 16. Create a file to store the public key: `$ touch .ssh/authorized_keys` 
