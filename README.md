@@ -12,7 +12,7 @@ The goal of this Capstone project is to deploy a web application built from a pr
 ### Software:
 > Openssh Server,  Apache2,  PostgreSQL,  GIT,  mod_wsgi,  Python,  virtualenv,  Flask,  requests,  httplib2,  sqlalchemy, psycopg2,  oauth2client,  render_template,  sqlalchemy_utils,  redirect
 
-## Project Detail
+## Project Details
 ### Amazon Lightsail Set Up
 
 1. Go to the Amazon Lightsail website
@@ -139,7 +139,7 @@ $ sudo pip -h install sqlalchemy_utils
 $ sudo pip -h install redirect
 ```
 
-11. Now for our application to properly run we must do some tweaking to the __init__.py file. Anywhere in the file where Python tries to open client_secrets.json this must be changed to its complete path. Use the `nano __init__.py` command to change the client_secrets.json line to `/var/www/catalog/catalog/client_secrets.json` ![Json](/json.png)
+11. Now for our application to properly run we must do some tweaking to the `__init__.py` file. Anywhere in the file where Python tries to open `client_secrets.json` this must be changed to its complete path. Use the `nano __init__.py` command to change the client_secrets.json line to `/var/www/catalog/catalog/client_secrets.json` ![Json](/json.png)
 
 12. We must also change the `host` to your **Amazon Lightsail public IP** address and `port` to **80**
 ![Port](/port.png)
