@@ -34,13 +34,13 @@ Click the 'Download' to download your private key, it should go to your Download
 4. To make our public key usable and secure type `$ chmod 600 ~/.ssh/YourAWSKey.pem` into the terminal.
 5. We now use this key to log into our Amazon Lightsail Server as the user ubuntu: `$ ssh -i ~/.ssh/YourAWSKey.pem ubuntu@3.95.159.148`
 
-### Create new account grader
+### Create New Account Grader
 6. Amazon Lightsail does not allow you to log in as a root user, but we can switch to become a root user. Type `$ sudo su -` and boom, we become a root user! 
 7. As Udacity requires we need to create a user called `grader`. Type  `$ sudo adduser grader` to create another user 'grader'. It will ask for 2 passwords and then a few other fields which you can leave blank.
 8. We must create a file to give the user grader superuser privileges. To do this type `$ sudo nano /etc/sudoers.d/grader`. This will create a new file that will be the superuser configuration for grader. When nano opens type `grader ALL=(ALL:ALL)`, to save the file hit Ctrl-X on your keyboard, type 'Y' to save, and return to save the filename.
 9. In order to prevent the $ sudo: unable to resolve host error, edit the hosts by `$ sudo nano /etc/hosts`, and then add `127.0.1.1 ip-10-20-37-65` under `127.0.1.1:localhost`
 
-### Install updates and finger package
+### Install Updates and Finger Package
 10. It is a good practice to update & upgrade all softwares in order to keep the system secure.
     * `sudo apt-get update`
     * `sudo apt-get upgrade`
@@ -62,14 +62,14 @@ Click the 'Download' to download your private key, it should go to your Download
 21. Type `$ ~.` to disconnect from Amazon Lightsail server
 22. Log into the server as grader: `$ ssh -i ~/.ssh/udacity_key.rsa grader@3.95.159.148`
 
-### Enforce key based authentication
+### Enforce Key Based Authentication
 23. We now need to enforce the key-based authentication: `$ sudo nano /etc/ssh/sshd_config`. Find the *PasswordAuthentication* line and change text after to `no`. After this, restart ssh again: `$ sudo service ssh restart`
 
 ### Change Port
 24. We now need to change the ssh port from 22 to 2200, as required by Udacity: `$ sudo nano /etc/ssh/ssdh_config` Find the *Port* line and change **22** to **2200**. Restart ssh: `$ sudo service ssh restart`
 25. Disconnect the server by `$ ~.` and then log back through port 2200: `$ ssh -i ~/.ssh/udacity_key.rsa -p 2200 grader@3.95.159.148`
 
-### Disable root login
+### Disable Root Login
 26. Disable ssh login for **root** user, as required by Udacity: `$ sudo nano /etc/ssh/sshd_config`. Find the *PermitRootLogin* line and edit to `no`. Restart ssh `$ sudo service ssh restart`
 
 ### Configure UFW
@@ -124,7 +124,7 @@ application.secret_key = 'super_secret_key'
    * `$ sudo chmod -R 777 venv`
 9. You should see a `(venv)` appears before your username in the command line: ![Venv](/venv.png)
 
-### Install flask and other packages
+### Install Flask and Other Packages
 10. While our virtual environment is activated we need to install all packages required for our Flask application. Here are some defaults but you may have more to install:
 ```
 $ sudo apt-get -H install python-pip
