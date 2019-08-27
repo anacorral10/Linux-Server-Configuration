@@ -10,22 +10,9 @@ The goal of this Capstone project is to deploy a web application built from a pr
 > SSH port: 2200
 
 ### Software:
-* Openssh Server
-* Apache2
-* PostgreSQL
-* GIT
-* mod_wsgi
-* Python
-* virtualenv
-* Flask
-* requests
-* httplib2
-* sqlalchemy
-* psycopg2
-* oauth2client
-* render_template
-* sqlalchemy_utils
-* redirect
+> Openssh Server, Apache2, PostgreSQL, GIT, mod_wsgi, Python, virtualenv,\
+Flask, requests, httplib2, sqlalchemy, psycopg2, oauth2client, render_template,\
+sqlalchemy_utils, redirect
 
 ## Project Detail
 ### Amazon Lightsail Set Up
