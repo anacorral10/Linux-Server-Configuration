@@ -158,6 +158,64 @@ $ sudo pip -h install redirect
 
 12. We must also change the `host` to your **Amazon Lightsail public IP** address and `port` to **80**
 ![Port](/port.png)
+
+### Configure Virtual Host
+13. Now we need to configure and enable the virtual host: 
+```$ sudo nano /etc/apache2/sites-available/catalog.conf```
+14. Paste the following code and save: 
+```
+<VirtualHost *:80>
+    ServerName [YOUR PUBLIC IP ADDRESS]
+    ServerAlias [YOUR AMAZON LIGHTSAIL HOST NAME]
+    ServerAdmin admin@3.95.159.148
+    WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/venv/lib/python2.7/site-packages
+    WSGIProcessGroup catalog
+    WSGIScriptAlias / /var/www/catalog/catalog.wsgi
+    <Directory /var/www/catalog/catalog/>
+        Order allow,deny
+        Allow from all
+    </Directory>
+    Alias /static /var/www/catalog/catalog/static
+    <Directory /var/www/catalog/catalog/static/>
+        Order allow,deny
+        Allow from all
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    LogLevel warn
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+If you need help finding your servers hostname go [here](https://www.hcidata.info/host2ip.cgi) and paste the IP address. Save and quit nano
+
+### Database
+15. Now we need to set up the database
+```
+$ sudo apt-get install libpq-dev python-dev
+$ sudo apt-get install postgresql postgresql-contrib
+$ sudo su - postgres -i
+$ psql
+```
+You should see the username changed again in command line, and type `$ psql` to get into postgres command line 
+![Psql](/psql.png)
+
+16. Now we create a user to create and set up the database. I name my database `catalog` with user `catalog`
+```
+postgres=# CREATE USER catalog WITH PASSWORD [password];
+postgres=# ALTER USER catalog CREATEDB;
+postgres=# CREATE DATABASE catalog with OWNER catalog;
+postgres=# \c catalog   #Connect to database
+catalog=# REVOKE ALL ON SCHEMA public FROM public;
+catalog=# GRANT ALL ON SCHEMA public TO catalog;
+catalog=# \q   #Quit the postgrel command line 
+$ exit
+```
+Your command line should now be back to grader.
+
+17. Now use `sudo nano` again to edit your `__init__.py`, `database_setup.py`, and `lotsofmenus.py` files to change the database engine from `sqlite://catalog.db` to `engine = create_engine('postgresql://catalog:[your password]@localhost/catalog`
+18. Initiate the database if you have a script to do so (example: `python database_setup.py` or `python lotsofmenus.py`)
+19. Restart Apache server `$ sudo service apache2 restart` and enter your public IP address or host name into the browser. **Hooray!!! Your application should be online now!** 
+
+
    
    
 
