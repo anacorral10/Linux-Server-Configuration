@@ -118,6 +118,29 @@ We will use a Python virtual machine, Apache2 with mod_wsgi, and PostgreSQL to h
 ### Clone Catalog Project
 5. Now we clone the project from Github: `$ git clone [your link] catalog`
 
+### Create .wsgi file
+6. Create the .wsgi file by `$ sudo nano catalog.wsgi` and make sure your secret key matches with your project secret key:
+```
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0, "/var/www/catalog/")
+
+from catalog import app as application
+application.secret_key = 'super_secret_key'
+```
+7. Rename your `application.py` in your catalog application folder to `__init__.py` by `$ mv project.py __init__.py`
+
+### Virtual Machine
+8. Now we need to install and start the virtual machine,make sure you are in `/var/www/catalog`.
+   * `$ sudo pip install virtualenv`
+   * `$ sudo virtualenv venv`
+   * `$ source venv/bin/activate`
+   * `$ sudo chmod -R 777 venv`
+   You should see a `(venv)` appears before your username in the command line: ![Venv](/venv.png)
+   
+   
+
 
 
 
